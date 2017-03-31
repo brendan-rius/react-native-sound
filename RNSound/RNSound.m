@@ -172,10 +172,10 @@ RCT_EXPORT_METHOD(release:(nonnull NSNumber*)key) {
   }
 }
 
-RCT_EXPORT_METHOD(setVolume:(nonnull NSNumber*)key withValue:(nonnull NSNumber*)value withInterval:(double)timeInterval) {
+RCT_EXPORT_METHOD(setVolume:(nonnull NSNumber*)key withValue:(nonnull NSNumber*)value withInterval:(nonnull NSNumber*)timeInterval) {
   AVAudioPlayer* player = [self playerForKey:key];
   if (player) {
-      [player setVolume:value fadeDuration:timeInterval];
+      [player setVolume:[value floatValue] fadeDuration:[timeInterval doubleValue]];
   }
 }
 
