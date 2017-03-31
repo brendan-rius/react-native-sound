@@ -93,13 +93,13 @@ Sound.prototype.getVolume = function() {
   return this._volume;
 };
 
-Sound.prototype.setVolume = function(value) {
+Sound.prototype.setVolume = function(value, fadeInterval = 0) {
   this._volume = value;
   if (this._loaded) {
     if (IsAndroid || IsWindows) {
       RNSound.setVolume(this._key, value, value);
     } else {
-      RNSound.setVolume(this._key, value);
+      RNSound.setVolume(this._key, value, fadeInterval);
     }
   }
   return this;
